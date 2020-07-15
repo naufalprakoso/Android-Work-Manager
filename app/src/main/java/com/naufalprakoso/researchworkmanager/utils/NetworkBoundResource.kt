@@ -14,7 +14,7 @@ constructor(private val contextProviders: ContextProviders) {
     private val result = MediatorLiveData<Resource<ResultType>>()
 
     init {
-        result.value = Resource.loading(null)
+        result.postValue(Resource.loading(null))
         val dbSource = loadFromDB()
         result.addSource(dbSource) { data ->
             result.removeSource(dbSource)
@@ -30,7 +30,7 @@ constructor(private val contextProviders: ContextProviders) {
 
     private fun setValue(newValue: Resource<ResultType>) {
         if (result.value != newValue) {
-            result.value = newValue
+            result.postValue(newValue)
         }
     }
 

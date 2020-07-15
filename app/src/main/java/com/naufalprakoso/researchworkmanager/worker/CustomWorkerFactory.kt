@@ -5,7 +5,6 @@ import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
 import com.naufalprakoso.researchworkmanager.hero.usecase.HeroUseCase
-import javax.inject.Inject
 
 /**
  * Create a custom worker factory in order to create
