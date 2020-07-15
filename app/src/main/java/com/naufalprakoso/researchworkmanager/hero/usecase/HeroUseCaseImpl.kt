@@ -31,21 +31,8 @@ class HeroUseCaseImpl(
         }.asLiveData()
     }
 
-    override fun getHeroes(): LiveData<Resource<List<HeroEntity>>> {
-        return object :
-            NetworkBoundResource<List<HeroEntity>, List<HeroResponse>>(contextProviders) {
-            override fun loadFromDB(): LiveData<List<HeroEntity>> {
-                return heroRepository.getHeroes()
-            }
-
-            override fun shouldFetch(data: List<HeroEntity>?): Boolean = true
-
-            override fun createCall(): LiveData<ApiResponse<List<HeroResponse>>>? =
-                heroApiRepository.getAll()
-
-            override fun saveCallResult(data: List<HeroResponse>) {
-                heroRepository.insertOrUpdate(data)
-            }
-        }.asLiveData()
+    override fun fetchHeroes() {
+        val response = heroApiRepository.getAll()
+        heroRepository.insertOrUpdate(response)
     }
 }

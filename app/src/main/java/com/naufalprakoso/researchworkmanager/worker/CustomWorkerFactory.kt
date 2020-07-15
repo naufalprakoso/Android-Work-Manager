@@ -28,5 +28,4 @@ class CustomWorkerFactory(private val heroUseCase: HeroUseCase) : WorkerFactory(
             else -> null
         }
     }
-
 }

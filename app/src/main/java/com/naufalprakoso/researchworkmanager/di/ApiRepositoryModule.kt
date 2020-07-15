@@ -14,8 +14,6 @@ class ApiRepositoryModule {
 
     @Provides
     fun provideHeroApiRepository(serviceBuilder: ServiceBuilder): HeroApiRepository {
-        return HeroApiRepositoryImpl(
-            serviceBuilder
-        )
+        return HeroApiRepositoryImpl(serviceBuilder)
     }
 }

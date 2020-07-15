@@ -13,5 +13,5 @@ interface HeroDao {
     fun getHeroes(): LiveData<List<HeroEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertHeroes(data: List<HeroEntity>)
+    fun insertHeroes(data: List<HeroEntity>)
 }

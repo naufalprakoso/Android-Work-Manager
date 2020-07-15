@@ -7,7 +7,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import kotlinx.coroutines.CoroutineScope
 
 @InstallIn(ApplicationComponent::class)
 @Module
@@ -15,12 +14,10 @@ class RepositoryModule {
 
     @Provides
     fun provideHeroRepository(
-        appDatabase: AppDatabase,
-        ioScope: CoroutineScope
+        appDatabase: AppDatabase
     ): HeroRepository {
         return HeroRepositoryImpl(
-            appDatabase.getHeroDao(),
-            ioScope
+            appDatabase.getHeroDao()
         )
     }
 }

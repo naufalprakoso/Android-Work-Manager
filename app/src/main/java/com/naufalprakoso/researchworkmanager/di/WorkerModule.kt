@@ -21,5 +21,4 @@ class WorkerModule {
             .setWorkerFactory(delegateWorkerFactory)
             .build()
     }
-
 }

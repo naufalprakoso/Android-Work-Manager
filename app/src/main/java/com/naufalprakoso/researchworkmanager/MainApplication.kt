@@ -15,5 +15,4 @@ open class MainApplication : Application(), Configuration.Provider {
     override fun getWorkManagerConfiguration(): Configuration {
         return workerConfiguration
     }
-
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.naufalprakoso.researchworkmanager.hero.usecase.HeroUseCase
+import kotlinx.coroutines.coroutineScope
 
 class SeedDatabaseWorker(
     context: Context,
@@ -14,9 +15,9 @@ class SeedDatabaseWorker(
 
     private val tag = SeedDatabaseWorker::class.java.name
 
-    override suspend fun doWork(): Result {
-        return try {
-            heroUseCase.getHeroes()
+    override suspend fun doWork(): Result = coroutineScope {
+        try {
+            heroUseCase.fetchHeroes()
             Log.d(tag, "Success: $runAttemptCount")
             Result.success()
         } catch (e: Exception) {
@@ -32,5 +33,4 @@ class SeedDatabaseWorker(
             }
         }
     }
-
 }
