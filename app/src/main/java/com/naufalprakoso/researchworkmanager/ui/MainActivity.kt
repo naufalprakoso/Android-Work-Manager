@@ -16,7 +16,7 @@ import androidx.work.WorkManager
 import androidx.work.ExistingPeriodicWorkPolicy
 import com.naufalprakoso.researchworkmanager.databinding.ActivityMainBinding
 import com.naufalprakoso.researchworkmanager.utils.UNIQUE_WORK_NAME
-import com.naufalprakoso.researchworkmanager.worker.SeedDatabaseWorker
+import com.naufalprakoso.researchworkmanager.workmanager.worker.SeedDatabaseWorker
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.UUID
 import java.util.concurrent.TimeUnit
@@ -103,8 +103,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeData() {
-        viewModel.getHeroes()?.observe(this, Observer {
-            val data = it.data
+        viewModel.getHeroes().observe(this, Observer { data ->
             if (!data.isNullOrEmpty()) {
                 adapter.setHeroes(data)
                 adapter.notifyDataSetChanged()

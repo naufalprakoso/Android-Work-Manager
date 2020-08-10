@@ -4,14 +4,13 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.naufalprakoso.researchworkmanager.database.entity.HeroEntity
-import com.naufalprakoso.researchworkmanager.hero.usecase.HeroUseCase
-import com.naufalprakoso.researchworkmanager.vo.Resource
+import com.naufalprakoso.researchworkmanager.hero.repo.HeroRepository
 
 class MainViewModel @ViewModelInject constructor(
-    private val heroUseCase: HeroUseCase
+    private val heroRepository: HeroRepository
 ) : ViewModel() {
 
-    fun getHeroes(): LiveData<Resource<List<HeroEntity>>>? {
-        return heroUseCase.getOfflineHeroes()
+    fun getHeroes(): LiveData<List<HeroEntity>> {
+        return heroRepository.getHeroes()
     }
 }

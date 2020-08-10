@@ -82,10 +82,6 @@ dependencies {
 	implementation(Retrofit.retrofit)
 	implementation(Retrofit.converterGson)
 
-	// Coroutines
-	implementation(Coroutines.core)
-	implementation(Coroutines.android)
-
 	// Work Manager
 	implementation(Dependencies.workManager)
 

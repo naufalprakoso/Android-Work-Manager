@@ -1,4 +1,4 @@
-package com.naufalprakoso.researchworkmanager.worker
+package com.naufalprakoso.researchworkmanager.workmanager.worker
 
 import android.content.Context
 import android.util.Log

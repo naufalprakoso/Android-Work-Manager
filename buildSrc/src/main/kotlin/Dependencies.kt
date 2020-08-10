@@ -11,8 +11,6 @@ object Versions {
     const val junitVersion = "4.12"
     const val materialVersion = "1.2.0-alpha06"
     const val retrofit2Version = "2.6.0"
-    const val coroutinesCoreVersion = "1.2.1"
-    const val coroutinesAndroidVersion = "1.1.1"
     const val gsonVersion = "2.8.6"
     const val hiltVersion = "2.28-alpha"
     const val hiltLifeCycleVersion = "1.0.0-alpha01"
@@ -41,11 +39,6 @@ object Dependencies {
     const val gson = "com.google.code.gson:gson:${Versions.gsonVersion}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtxVersion}"
     const val workManager =  "androidx.work:work-runtime-ktx:${Versions.workManagerVersion}"
-}
-
-object Coroutines {
-    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesCoreVersion}"
-    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesAndroidVersion}"
 }
 
 object Retrofit {

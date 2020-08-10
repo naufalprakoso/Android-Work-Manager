@@ -1,24 +1,33 @@
 package com.naufalprakoso.researchworkmanager.di
 
-import androidx.work.Configuration
-import com.naufalprakoso.researchworkmanager.worker.DelegateWorkerFactory
+import androidx.work.ListenableWorker
+import androidx.work.WorkerFactory
+import com.naufalprakoso.researchworkmanager.workmanager.factory.ChildWorkerFactory
+import com.naufalprakoso.researchworkmanager.workmanager.factory.CustomWorkerFactory
+import com.naufalprakoso.researchworkmanager.workmanager.factory.WrapperWorkerFactory
+import com.naufalprakoso.researchworkmanager.workmanager.worker.SeedDatabaseWorker
+import dagger.Binds
+import dagger.MapKey
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import javax.inject.Singleton
+import dagger.multibindings.IntoMap
+import kotlin.reflect.KClass
+
+@MapKey
+@Target(AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.RUNTIME)
+annotation class WorkerKey(val value: KClass<out ListenableWorker>)
 
 @InstallIn(ApplicationComponent::class)
 @Module
-class WorkerModule {
+abstract class WorkerModule {
 
-    @Singleton
-    @Provides
-    fun provideWorkManagerConfiguration(
-        delegateWorkerFactory: DelegateWorkerFactory
-    ): Configuration {
-        return Configuration.Builder()
-            .setWorkerFactory(delegateWorkerFactory)
-            .build()
-    }
+    @Binds
+    abstract fun bindWorkerFactoryModule(workerFactory: WrapperWorkerFactory): WorkerFactory
+
+    @Binds
+    @IntoMap
+    @WorkerKey(SeedDatabaseWorker::class)
+    abstract fun bindFetchWorker(factory: CustomWorkerFactory): ChildWorkerFactory
 }
