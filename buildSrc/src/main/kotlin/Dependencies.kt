@@ -63,4 +63,5 @@ object Hilt {
 object Testing {
     const val jUnit = "junit:junit:${Versions.junitVersion}"
     const val extJUnit = "androidx.test.ext:junit:${Versions.androidxTestVersion}"
+    const val workManager =  "androidx.work:work-testing:${Versions.workManagerVersion}"
 }

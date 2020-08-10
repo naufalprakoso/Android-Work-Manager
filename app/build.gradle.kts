@@ -84,6 +84,7 @@ dependencies {
 
 	// Work Manager
 	implementation(Dependencies.workManager)
+	androidTestImplementation(Testing.workManager)
 
 	// Gson
 	implementation(Dependencies.gson)
