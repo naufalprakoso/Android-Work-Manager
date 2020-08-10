@@ -15,7 +15,7 @@ object Versions {
     const val hiltVersion = "2.28-alpha"
     const val hiltLifeCycleVersion = "1.0.0-alpha01"
     const val fragmentKtxVersion = "1.2.5"
-    const val workManagerVersion = "2.3.4"
+    const val workManagerVersion = "2.4.0"
 }
 
 object AppConfiguration {
